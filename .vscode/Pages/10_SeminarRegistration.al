@@ -111,11 +111,11 @@ page 123456710 "Seminar Registration"
             {
                 SubPageLink = "No." = field ("Seminar No.");
             }
-            //part("Customer Details FactBox"; "Customer Details FactBox")
-            //{
-              //  Provider = SeminarRegistrationLines;
-                //SubPageLink = "No." = field ("Bill-to Customer No.");
-            //}
+            part("Customer Details FactBox"; "Customer Details FactBox")
+            {
+                Provider = SeminarRegistrationLines;
+                SubPageLink = "No." = field ("Bill-to Customer No.");
+            }
 
             systempart("Links"; Links)
             {
@@ -176,7 +176,7 @@ page 123456710 "Seminar Registration"
                 PromotedIsBig = true;
                 PromotedCategory = Process;
                 ShortcutKey = F9;
-                //RunObject = codeunit "Seminar-Post (Yes/No)";
+                RunObject = codeunit "Seminar-Post (Yes/No)";
             }
         }
     }

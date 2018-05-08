@@ -338,6 +338,9 @@ table 123456710 "Seminar Registration Header"
         "Document Date" := WORKDATE;
         SeminarSetup.GET;
         NoSeriesMgt.SetDefaultSeries("Posting No. Series",SeminarSetup."Posted Seminar Reg. Nos.");
+        if GetFilter("Seminar No.") = GetRangeMax("Seminar No.") then
+            Validate("Seminar No.",GetRangeMin("Seminar No."))
+
     end;
 
     procedure AssistEdit(OldSeminarRegHeader : Record "Seminar Registration Header") : Boolean;

@@ -5,6 +5,8 @@ table 123456732 "Seminar Ledger Entry"
     //     - Created new table
 
     Caption = 'Seminar Ledger Entry';
+    LookupPageId = "Seminar Ledger Entries";
+    DrillDownPageId = "Seminar Ledger Entries";  
 
     fields
     {
@@ -30,6 +32,7 @@ table 123456732 "Seminar Ledger Entry"
             Caption = 'Entry Type';
             OptionCaption = 'Registration,Cancelation';
             OptionMembers = Registration,Cancelation;
+         
         }
         field(6;"Document No.";Code[20])
         {
@@ -155,6 +158,9 @@ table 123456732 "Seminar Ledger Entry"
     keys
     {
         key(Key1;"Entry No.")
+        {
+        }
+        key(Key2;"Document No.","Posting Date")
         {
         }
     }

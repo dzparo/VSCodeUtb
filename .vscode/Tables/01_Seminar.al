@@ -133,7 +133,7 @@ table 123456701 Seminar
         "Last date Modified" := Today;
     end;
 
-    local procedure AssistEdit() : Boolean;
+    procedure AssistEdit() : Boolean;
     var
         Seminar : Record Seminar;
     begin
