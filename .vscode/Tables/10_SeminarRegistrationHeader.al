@@ -4,11 +4,13 @@ table 123456710 "Seminar Registration Header"
     //   Chapter 6 - Lab 1-3 & Lab 1-4
     //     - Created new table
 
+    Caption = 'Seminar Registration Header';
 
     fields
     {
         field(1;"No.";Code[20])
         {
+            Caption='No.';
 
             trigger OnValidate();
             begin
@@ -21,6 +23,7 @@ table 123456710 "Seminar Registration Header"
         }
         field(2;"Starting Date";Date)
         {
+            Caption='Starting Date';
 
             trigger OnValidate();
             begin
@@ -31,6 +34,7 @@ table 123456710 "Seminar Registration Header"
         field(3;"Seminar No.";Code[20])
         {
             TableRelation = Seminar;
+            Caption = 'Seminar No.';
 
             trigger OnValidate();
             begin
@@ -62,10 +66,12 @@ table 123456710 "Seminar Registration Header"
         }
         field(4;"Seminar Name";Text[50])
         {
+            Caption = 'Seminar Name';
         }
-        field(5;"Instructor Code";Code[10])
+        field(5;"Instructor Resource No.";Code[10])
         {
             TableRelation = Resource where (Type=const(Person));
+            Caption = 'Instructor Code';
 
             trigger OnValidate();
             begin
@@ -74,33 +80,39 @@ table 123456710 "Seminar Registration Header"
         }
         field(6;"Instructor Name";Text[50])
         {
-            CalcFormula = Lookup(Resource.Name where ("No."=Field("Instructor Code"),
+            Caption = 'Instructor Name';
+            CalcFormula = Lookup(Resource.Name where ("No."=Field("Instructor Resource No."),
                                                       Type=const(Person)));
             Editable = false;
             FieldClass = FlowField;
         }
         field(7;Status;Option)
         {
+            Caption = 'Status';
             OptionCaption = 'Planning,Registration,Closed,Canceled';
             OptionMembers = Planning,Registration,Closed,Canceled;
         }
-        field(8;Duration;Decimal)
+        field(8;"Duration";Decimal)
         {
+            Caption = 'Duration';
             DecimalPlaces = 0:1;
         }
         field(9;"Maximum Participants";Integer)
         {
+            Caption = 'Maximum Participants';
         }
         field(10;"Minimum Participants";Integer)
         {
+            Caption = 'Minimum Participants';
         }
-        field(11;"Room Code";Code[10])
+        field(11;"Room Resource No.";Code[10])
         {
+            Caption = 'Room Code';
             TableRelation = Resource where (Type=const(Machine));
 
             trigger OnValidate();
             begin
-                if "Room Code" = '' then begin
+                if "Room Resource No." = '' then begin
                   "Room Name" := '';
                   "Room Address" := '';
                   "Room Address 2" := '';
@@ -109,7 +121,7 @@ table 123456710 "Seminar Registration Header"
                   "Room County" := '';
                   "Room Country/Reg. Code" := '';
                 end else begin
-                  SeminarRoom.GET("Room Code");
+                  SeminarRoom.GET("No.");
                   "Room Name" := SeminarRoom.Name;
                   "Room Address" := SeminarRoom.Address;
                   "Room Address 2" := SeminarRoom."Address 2";
@@ -266,7 +278,7 @@ table 123456710 "Seminar Registration Header"
         key(PK;"No.")
         {
         }
-        key(Key2;"Room Code")
+        key(Key2;"Room Resource No.")
         {
             SumIndexFields = Duration;
         }
