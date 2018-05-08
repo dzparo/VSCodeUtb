@@ -270,6 +270,10 @@ table 123456710 "Seminar Registration Header"
         field(28;"Posting No.";Code[20])
         {
         }
+        field(40;"No. Printed";Code[20])
+        {
+            editable = false;
+        }
 
     }
 
