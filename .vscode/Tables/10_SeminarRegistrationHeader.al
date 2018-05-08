@@ -121,7 +121,7 @@ table 123456710 "Seminar Registration Header"
                   "Room County" := '';
                   "Room Country/Reg. Code" := '';
                 end else begin
-                  SeminarRoom.GET("No.");
+                  SeminarRoom.GET("Room Resource No.");
                   "Room Name" := SeminarRoom.Name;
                   "Room Address" := SeminarRoom.Address;
                   "Room Address 2" := SeminarRoom."Address 2";

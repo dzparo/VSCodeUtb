@@ -1,4 +1,4 @@
-codeunit 123456700 InstallCodeunit
+codeunit 123456799 InstallCodeunit
 {
     Subtype=Install;
 
